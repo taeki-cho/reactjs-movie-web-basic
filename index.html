@@ -9,36 +9,44 @@
 <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
-  const root = document.getElementById("root");
-  const title = (
-      <h3 id="title" onMouseEnter={()=>console.log("mouse enter")}>
-        hello i'm a title
-      </h3>
+  function App() {
+    const [minutes, setMinutes] = React.useState();
+    const onChange = (event) => {
+      setMinutes(event.target.value);
+    }
+    return (
+      <div>
+        <h1>Super Converter</h1>
+        <label htmlFor="minutes">Minutes</label>
+        <input value={minutes} id="minutes" placeholder="Minutes" type="number"
+          onChange={onChange}
+        />
+        <label htmlFor="hours">Hours</label>
+        <input id="hours" placeholder="Hours" type="number" />
+      </div>
     );
-  const btn = (
-      <button 
-        style={{backgroundColor: "tomato"}} 
-        onClick={()=>console.log("click")}>
-        click me
-      </button>
-    )
-    ;
-  /*
-  const h3 = React.createElement(
-    "h3", 
-    {onMouseEnter: () => console.log("mouse enter")}
-    , "hello i'm a span");
-    
-  const btn = React.createElement(
-    "button",
-    {
-      onClick: () => console.log("click"),
-    },
-    "click me"
-  );
-  */
-  const container = React.createElement("div", null, [title, btn]);
-  ReactDOM.render(container, root);
+  };
+
+  const root = document.getElementById("root");
+  ReactDOM.render(<App />, root);
+
+
+  /* react 로 렌더링 하는 방법
+    const h3 = React.createElement(
+      "h3", 
+      {onMouseEnter: () => console.log("mouse enter")}
+      , "hello i'm a span");
+      
+    const btn = React.createElement(
+      "button",
+      {
+        onClick: () => console.log("click"),
+      },
+      "click me"
+    );
+      const container = React.createElement("div", null, [title, btn]);
+    */
+
 </script>
 
 </html>
